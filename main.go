@@ -18,7 +18,10 @@ var (
 
 func main() {
 	//注册Kafka消费者
-	orm.RegisterDataBase("default", "mysql", "root:Root!!2018@tcp(47.105.36.188:3306)/seckill?charset=utf8")
+	err := orm.RegisterDataBase("default", "mysql", "root:Kotomi2012%40@tcp(172.31.116.246:3306)/seckill?charset=utf8")
+	if err != nil {
+		fmt.Println("Failed to register database, error: ", err.Error())
+	}
 	go KafkaConsumer()
 	beego.Run()
 
